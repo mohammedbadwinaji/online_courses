@@ -9,7 +9,7 @@ import {
 	UserIcon,
 } from "@heroicons/react/24/solid";
 // import { UserIcon } from "@heroicons/react/24/outline";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { UserContext } from "../../contexts/AuthContext";
 import { courseCategroy } from "../../constants/courseCategory";
 
@@ -394,13 +394,24 @@ export default function MainLayout() {
 										</div>
 										<div className="mt-3 space-y-1 px-2">
 											{userNavigation.map((item) => (
-												<Link
+												<NavLink
 													key={item.name}
 													to={item.to}
-													className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+													className={({
+														isActive,
+													}: {
+														isActive: boolean;
+													}): string =>
+														classNames(
+															isActive
+																? "bg-gray-900 text-white"
+																: "text-gray-300 hover:bg-gray-700 hover:text-white",
+															"block rounded-md px-3 py-2 text-base font-medium"
+														)
+													}
 												>
 													{item.name}
-												</Link>
+												</NavLink>
 											))}
 										</div>
 									</div>

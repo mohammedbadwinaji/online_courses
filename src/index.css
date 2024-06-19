@@ -51,6 +51,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-transform: capitalize;
 	transition: 0.3s;
 }
 .button-inline-flex {

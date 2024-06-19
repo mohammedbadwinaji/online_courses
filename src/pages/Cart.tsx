@@ -20,10 +20,27 @@ export default function Cart() {
 			<h4 className="text-md font-bold mt-2 mb-5 text-gray-800">
 				{CourseShoppingCartData.length} courses in cart
 			</h4>
-			<div className="grid relative gap-4 md:grid-cols-2 lg:grid-cols-3  mb-14 container">
+			<div className="mb-14 container">
 				{CourseShoppingCartData.map((course, ind) => {
-					return <ShoppingCartCourseComponent key={ind} course={course} />;
+					return (
+						<ShoppingCartCourseComponent
+							key={ind}
+							course={course}
+							className="mb-5 w-fit rounded-lg m-auto"
+						/>
+					);
 				})}
+				<div className="w-[50%] p-2  m-auto  bg-gray-100  shadow-xl mt-10 text-center">
+					<h2 className="text-lg text-gray-800 font-bold mb-1"> total price </h2>
+					<span className="font-bold text-lg mr-1">
+						{CourseShoppingCartData.reduce((acc, price) => {
+							return +price.price.value + acc;
+						}, 0)}
+						
+					</span>
+					<span className="font-bold text-gray-800 text-sm">{CourseShoppingCartData[0].price.currency}</span>
+					<button className="button p-2 m-auto mt-4 w-full sm:w-[50%]"> Checkout </button>
+				</div>
 			</div>
 		</div>
 	);
